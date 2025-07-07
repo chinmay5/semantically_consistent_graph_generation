@@ -1,0 +1,6 @@
+name: 'atm'
+datadir: 'data/atm/pt_files'
+pin_memory: True
+adaptive_loader: False
+fraction: 1.0
+use_radius: False
