@@ -1,0 +1,26 @@
+# General settings
+name: 'graph-tf-model'      # Warning: 'debug' and 'test' are reserved name that have a special behavior
+
+wandb: 'disabled'             # online | offline | disabled
+
+resume: null            # If resume, path to ckpt file from outputs directory in main directory
+test_only: null # Use absolute path
+
+
+check_val_every_n_epochs: 10
+sample_every_val: 200  # 20; Results in sampling after every 2000 epochs
+val_check_interval: null
+samples_to_generate: 32 #512       # We advise to set it to 2 x batch_size maximum
+samples_to_save: 20
+chains_to_save: 1
+log_every_steps: 50
+number_chain_steps: 50        # Number of frames in each gif
+
+final_model_samples_to_generate: 200 # 1000
+final_model_samples_to_save: 200 # 1000
+final_model_chains_to_save: 1 # 20
+
+evaluate_all_checkpoints: False
+
+memory_summary: False
+faster_sampling: 1                              # At each sampling step, set s=t-faster sampling (1 for normal sampling) # TODO: not implemented yet

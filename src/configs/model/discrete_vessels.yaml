@@ -1,0 +1,44 @@
+# Model settings
+transition: 'absorbing_edges' #absorbing_edges or uniform or marginal or planar
+diffusion_steps: 500
+n_layers: 5  # atm
+#n_layers: 8 # 12  # cow
+
+
+# Extra features
+extra_features: False
+eigenfeatures: False
+max_degree: 10  # for degree distribution
+num_eigenvectors: 5
+num_eigenvalues: 9
+num_degree: 10  # for powers of adjacency matrix
+
+extra_molecular_features: False
+
+# Do not set hidden_mlp_E, dim_ffE too high, computing large tensors on the edges is costly
+# At the moment (03/08), y contains quite little information
+#hidden_mlp_dims: {'X': 256, 'E': 128, 'y': 128}
+hidden_mlp_dims: {'X': 128, 'E': 128, 'y': 128}
+
+# The dimensions should satisfy dx % n_head == 0
+#hidden_dims : {'dx': 256, 'de': 64, 'dy': 64, 'n_head': 8, 'dim_ffX': 256, 'dim_ffE': 128, 'dim_ffy': 128}
+hidden_dims : {'dx': 128, 'de': 64, 'dy': 64, 'n_head': 4, 'dim_ffX': 128, 'dim_ffE': 128, 'dim_ffy': 128} # vessap
+#hidden_dims : {'dx': 16, 'de': 16, 'dy': 16, 'n_head': 4, 'dim_ffX': 16, 'dim_ffE': 16, 'dim_ffy': 16}
+
+lambda_train: [1, 2, 5, 0]      # X, C, E, y
+
+nu:
+  x: 1
+  c: 1
+  e: 1
+  y: 1
+  e_small: 1
+  e_mid: 1
+  e_large: 1
+
+rev_proj: atm_proj_vanilla #cow_proj or cow_proj_vanilla, atm_proj, atm_proj_vanilla
+top_k: 4 # We take top-3 candidate predictions along with the actual one
+dropout: 0.3 #0.1
+dropout_in_and_out: True #False
+cycle_features: False
+equivariant: False
